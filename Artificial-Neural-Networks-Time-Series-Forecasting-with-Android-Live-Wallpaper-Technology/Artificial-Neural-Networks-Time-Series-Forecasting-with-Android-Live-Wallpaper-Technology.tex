@@ -38,6 +38,34 @@ The application of Artificial Neural Networks (ANN) for time series forecasting 
 
 In their nature the common types of ANNs are weighted directed graphs \cite{balabanov03}. The process of ANN training aims to find such values for the weights which minimize the total error of the output \cite{balabanov04}. When the size of ANN is larger, the amount of weights may reach very high levels. With the increase of the number of weights, the velocity of training of a single ANN on a single computer is being reduced. The elevated amount of calculations poses the application of supercomputers, clusters, GRIDs and donated distributed computing networks as reasonable and adequite \cite{balabanov01,balabanov02,keremedchiev01,tomov01}. In the last decade the immense spread of mobile devices suggests their surpassing usage over stand alone computers. During most of the operating time, the mobile devices are in idle mode. The possibilities ANN to be trained in distributed computing environment and the use of mobile devices can be efficiantly combined in software system for ANN training on mobile operating systems such as Android. In the current research Android Live Wallpaper technology is involved in ANN training for time series forecasting.
 
+\section{Technical Solution}
+
+The technical solution is divided in two parts. The first part is related to the Android application itself. The second part is related with the ANN data structure representation, information representation and the process of training/forecasting. For the first part Android development capabilities are used when for the second part Ecoge programming library is involved. 
+
+\subsection{Android Live Wallpaper}
+
+In its nature Live Wallpaper is interactive background in the Android home screen, which can process even animation. The Live Wallpaper is not so different than the other Android applications. First step of Live Wallpaper creation is a XML file with application description (manifest). Second component is a Service class inherited from WallpaperService. Inside of the Service class there is an Engine class. The Engine object is responsible for training/forecasting execution and background redrawing. Running LW in the Android operating system requires special permissions. The usage of Live Wallpaper feature should be explicitly written into manifest file in order to prevent wallpaper installation on devices wich are not capable run Live Wallpaper. 
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.5\linewidth]{fig01}
+  \caption{Android Live Wallpaper settings screen.}
+\label{fig:01}
+\end{figure}
+
+Setting up the wallpaper is done by sending an Intent to the operating system. SQLite database is used to store financial time series in the mobile device for offline mode operation. On a regular intervals wallpaper service activates - cycle of training is done, forecast is taken and the visual information is updated. Settings screen is used for visual representation parameters and device loading options (Fig. \ref{fig:01}). During operating mode a background image is drawn and ANN training/forecasting information is displayed (Fig. \ref{fig:02}). 
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.5\linewidth]{fig02}
+  \caption{Android Live Wallpaper operational screen.}
+\label{fig:02}
+\end{figure}
+
+\subsection{Encog Machine Learning Framework}
+
+For the forecasting Econg library is used. Multilayer perceptron with 3 layers in chosen. Time series is conditionally divided in two parts (past and future). Data frame for the past (lag) is supplied at the input of the ANN. Data frame for the the future (lead) is expected at the output of the ANN. Time series data are scaled (according neurons activation function) before to be fed as ANN's input. The output is also slacle with the opposite scaling coefficient used at the input. At each training cycle resilient backpropagation training is done. 
+
 \section{Conclusions}
 
 The usage of donated mobile devices power seems to be much more promising even than donated desktop distributed computing. In fact mobile devices are almost always running which is not the case with the desktop computers. As further research, donated mobile distributed computing infrastructure can be efficiently used for experiments with different activation functions \cite{zankinski01} or permutation algorithms \cite{zankinski02}. Extra experiments can be done for barcode readers \cite{atanasova02} and computer networks traffic \cite{tashev01,tashev02}.
