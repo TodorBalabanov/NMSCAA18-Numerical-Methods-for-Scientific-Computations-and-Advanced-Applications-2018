@@ -1,0 +1,78 @@
+\documentclass{llncs}
+
+\usepackage{graphicx}
+\usepackage{placeins}
+
+\begin{document}
+
+\title{Exam Questionnaire Assembling \\ with Genetic Algorithms}
+
+\author{Delyan Keremedchiev, Todor Balabanov}
+
+\institute{Institute of Information and Communication Technologies \\
+Bulgarian Academy of Sciences \\
+acad. Georgi Bonchev Str, block 2, 1113 Sofia, Bulgaria \\
+\email{dkeremedchiev@bas.bg} \\
+\texttt{http://www.iict.bas.bg/}}
+
+% Delyan Keremedchiev dkeremedchiev@bas.bg
+% Todor Balabanov todorb@iinf.bas.bg
+
+%----------------------------------------------------------------------------------------
+%   Title
+%----------------------------------------------------------------------------------------
+
+\maketitle
+
+%----------------------------------------------------------------------------------------
+%   Abstract
+%----------------------------------------------------------------------------------------
+
+\begin{abstract}
+
+During last two decades New Bulgarian University (Sofia, Bulgaria) has collected an extensive questionnaire based exams results. For its e-learning education the university uses web based system Moodle. This fact makes the system perfect candidate for software module extension in the direction of automated questionnaire assembling. 
+
+\keywords{automated test assembly, minimum redundant questions, genetic algorithms}
+\end{abstract}
+
+%----------------------------------------------------------------------------------------
+%   Paper
+%----------------------------------------------------------------------------------------
+
+\section{Introduction}
+
+The education process has two common phases - teaching and examining. The teaching phase is much more important than the examination phase, but the examination phase gives quantitative measure of the teaching quality and students learning rate. This study focuses on exams done with questionnaires. Questionnaires have many advantages compared with the other examination techniques. Despite the advantages of the questionnaires successful students testing depends heavily on the questionnaire quality. The questionnaire should consists of questions with different difficulty level and to avoid redundant questions. Also the questionnaire sensitivity should be high in order to distinct well students with high knowledge level and students with low knowledge level. Different approaches are described in the literature for the automated questionnaires assembling and the most common are - Particle Swarm Optimization \cite{cheng01}, Tabu Search \cite{hwang01}, Bee Algorithm \cite{luantangsrisuk01}, Differential Evolution \cite{wang01} and Genetic Algorithms \cite{gu01,verschoor01}. GAs are selected in this study, because of their general purpose application and proven efficiency in many highly combinatorial optimization problems. 
+
+\section{Genetic Algorithms}
+
+Genetic Algorithms are population-based, evolutionary, global optimization metaheuristics. The idea for GAs was inspired by the process of natural evolution. Initially they were proposed by was proposed by John Henry Holland in the 1970s. In GAs possible solutions are represented as population individuals. The most common solution representation is the binary representation. Fitness function is used to estimate goodness of each individual in the population. According fitness values a process of selection is applied such as better individuals to be selected. The selected individuals become parents for the next generation. The children in the new generation are created by crossover of the selected parents. Mutation is applied over a newly created children. Crossover gives exploration capabilities when mutation gives exploitation capabilities of the algorithm. The new generation replaces some part of the old generation in the population. If the elitist rule is applied the best individuals survive in each generation. This artificial process of evolution is applied in a loop. The process stops after certain amount of generations, certain amount of time or solution quality level achievement. 
+
+\section{Practical Proposal}
+
+At the university there is a bank of questions and results of passed exams. With such input information GA binary encoding is the perfect candidate for the problem described in the introductory part of this study. Each question which will be part of the GA individual is marked with 1 and question which will not be part of the individual is marked with 0. The best choice for crossover, when there is combinatorial individual encoding, is the uniform crossover. Mutation is easily applied by bit inversion. The most critical part of GA application is the construction of the fitness function. It is impossible to have accurate evaluation of each bank question qualities without real life evaluation. Here it comes the best advantages of New Bulgarian University statistics collection. All questions are given to be solved by the students in many handmade questionnaires. For each question there is statistics for success rate and time spent on the question by the students. With this information well balanced fitness function can be created in such way that total number of questions in the questionnaire to be minimized without lost of questionnaire sensitivity. Software solution, as Moodle extension, can be made as self adaptive module which collects questionnaire assembling statistics even from the automatic generated questionnaires.
+
+\section{Conclusions}
+
+Students evaluation with questionnaires is very efficient and by usage of GA the process of examination can be optimized. GAs reduce testing time by decreasing the number of questions and keeping the questionnaire sensitivity high. By this way examination quality is kept high and examination expenses are reduced. It is also important that questionnaire assembling is automated which saves time for the teachers. 
+
+%----------------------------------------------------------------------------------------
+%   Bibliography
+%----------------------------------------------------------------------------------------
+
+\begin{thebibliography}{99}
+
+\bibitem{cheng01} Shu-Chen Cheng, Yen-Ting Lin, Yueh-MinHuang, \textit{Dynamic Question Generation System for Web-based Testing Using Particle Swarm Optimization}
+
+\bibitem{gu01} Peipei Gu, Zhendong Niu, Xuting Chen, Wei Chen, \textit{A Personalized Genetic Algorithm Approach for Test Sheet Assembling}
+
+\bibitem{hwang01} Gwo-Jen Hwang, Peng-Yeng Yin, Shu-Heng Yeh, \textit{A Tabu Search Approach to Generating Test Sheets for Multiple Assessment Criteria}
+
+\bibitem{luantangsrisuk01} Vorapon Luantangsrisuk, Pokpong Songmuang, Rachada Kongkachandra, \textit{Automated Test Assembly with Minimum Redundant Questions Based on Bee Algorithm}
+
+\bibitem{verschoor01} Angela Verschoor, \textit{Genetic Algorithms for Automated Test Assembly}
+
+\bibitem{wang01} Feng-rui Wang, Wen-hong Wang, Hua-qing Yang, Quan-ke Pan, \textit{A Novel Discrete Differential Evolution Algorithm for Computer-Aided Test-Sheet Composition Problems}
+
+\end{thebibliography}
+
+\end{document}
