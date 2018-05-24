@@ -32,10 +32,51 @@
 
 \section{Introduction}
 
+\subsection{Signals Transmission}
+
+\begin{frame}
+\frametitle{Transmission}
+\begin{itemize}
+  \item The most used transmission function is the linear function:
+  \begin{equation}
+  \label{equation01}
+  y_{j} = \sum_{i=1}^{} x_{i}*w_{ij}
+  \end{equation}
+  \begin{itemize}
+    \item First problem is that the number of multiplications can be high, but worse is that it can vary.
+    \item The second problem is that values of the weight can go to big positive numbers or big negative numbers.
+  \end{itemize}
+  \item In order signals to be usable additional computation is needed in form of normalization. 
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Activation}
+\begin{itemize}
+  \item The most used activation functions are the sigmoid and hyperbolic tangent functions:
+
+  \begin{equation}
+  \label{equation02}
+  z_{j} = \frac{1}{1 + e^{-y_{j}}}
+  \end{equation}
+  \begin{itemize}
+    \item The output range is from 0.0 to 1.0.
+  \end{itemize}
+  
+  \begin{equation}
+  \label{equation03}
+  z_{j} = \frac{e^{2y_{j}}-1}{e^{2y_{j}}+1}
+  \end{equation}
+  \begin{itemize}
+    \item The output range is from -1.0 to +1.0.
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
 \subsection{Neuron Activation Function}
 
 \begin{frame}
-\frametitle{List of Commonly Used Activation Functions}
+\frametitle{List of Popular Activation Functions}
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.5\linewidth]{fig01}
